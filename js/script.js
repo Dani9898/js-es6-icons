@@ -150,7 +150,6 @@ const users = icone.filter((icona) => {
 });
 
 
-// const selezioneIndex = document.getElementById("types").selectedIndex;
 const selezione = document.getElementById("types");
 
 selezione.addEventListener("click", function(){
