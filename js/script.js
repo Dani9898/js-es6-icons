@@ -115,63 +115,45 @@ const icone = [
 
 const contenitore = document.getElementById("container-icone");
 
-function stampa(icona) {
-	contenitore.innerHTML += `
+function stampa(icons) {
+	contenitore.innerHTML = "";
+	icons.forEach((icon) => {
+		contenitore.innerHTML += `
 		<div class="icon">
-			<i class="${icona.family} ${icona.prefix}${icona.name} ${icona.color}"></i>
-			<h4>${icona.name}</h4>
+			<i class="${icon.family} ${icon.prefix}${icon.name} ${icon.color}"></i>
+			<h4>${icon.name}</h4>
 		</div>
 		`
+	});
 }
 
-
-icone.forEach((icon) => {
-	stampa(icon)
-})
-
-const animali = icone.filter((icona) => {
-	if (icona.type === "animal") {
-		return true
-	} 
-});
-
-
-const vegetali = icone.filter((icona) => {
-	if (icona.type === "vegetable") {
-		return true
-	} 
-});
-
-
-const users = icone.filter((icona) => {
-	if (icona.type === "user") {
-		return true
-	}
-});
-
+stampa(icone);
 
 const selezione = document.getElementById("types");
 
 selezione.addEventListener("click", function(){
 	if (selezione.value === "animals") {
-		contenitore.innerHTML = "";
-		animali.forEach((icon) => {		
-			stampa(icon);
-		})
+		const animali = icone.filter((icona) => {
+			if (icona.type === "animal") {
+				return true
+			} 
+		});
+		stampa(animali);
 	} else if (selezione.value === "vegetables") {
-		contenitore.innerHTML = "";
-		vegetali.forEach((icon) => {		
-			stampa(icon)
-		})
+		const vegetali = icone.filter((icona) => {
+			if (icona.type === "vegetable") {
+				return true
+			} 
+		});
+		stampa(vegetali);
 	} else if (selezione.value === "users") {
-		contenitore.innerHTML = "";
-		users.forEach((icon) => {		
-			stampa(icon)
-		})
+		const users = icone.filter((icona) => {
+			if (icona.type === "user") {
+				return true
+			}
+		});
+		stampa(users);
 	} else if (selezione.value === "all") {
-		contenitore.innerHTML = "";
-		icone.forEach((icon) => {		
-			stampa(icon)
-		})
+		stampa(icone);
 	}
 })
