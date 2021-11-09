@@ -131,7 +131,7 @@ stampa(icone);
 
 const selezione = document.getElementById("types");
 
-selezione.addEventListener("click", function(){
+selezione.addEventListener("change", function(){
 	if (selezione.value === "animals") {
 		const animali = icone.filter((icona) => {
 			if (icona.type === "animal") {
